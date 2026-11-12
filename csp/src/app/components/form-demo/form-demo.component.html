@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form (ngSubmit)="submit()" [formGroup]="regForm">
+                <div>
+                    <label class="form-label" for="name">Name : </label>
+                    <input type="text" formControlName="name" class="Form-Control">
+                    <div *ngIf="regForm.get('name')?.invalid && submitted" class="text-danger">
+                        <span *ngIf="regForm.get('name')?.hasError('required')">Name required</span>
+                        <span *ngIf=" regForm.get('name')?.hasError('min')">Name min 3 ch</span>
+                    </div>
+                </div>
+                <div>
+                    <label class="form-label" for="email">Email : </label>
+                    <input type="text" formControlName="email" class="Form-Control">
+                    <div *ngIf="regForm.get('email')?.invalid && submitted" class="text-danger">
+                        <span *ngIf="regForm.get('email')?.hasError('required')">Email required</span>
+                        <span *ngIf=" regForm.get('email')?.hasError('min')">Email invalid</span>
+                    </div>
+                </div>
+                <div>
+                    <label class="form-label" for="password">Password : </label>
+                    <input type="text" formControlName="password" class="Form-Control">
+                    <div *ngIf="regForm.get('password')?.invalid && submitted" class="text-danger">
+                        <span *ngIf="regForm.get('password')?.hasError('required')">Password required</span>
+                        <span *ngIf=" regForm.get('password')?.hasError('weakPassword')">Password too small</span>
+                    </div>
+                </div>
+                <div>
+                    <label class="form-label" for="mobile">Mobile : </label>
+                    <input type="text" formControlName="mobile" class="Form-Control">
+                    <div *ngIf="regForm.get('mobile')?.invalid && submitted" class="text-danger">
+                        <span *ngIf="regForm.get('mobile')?.hasError('required')">Mobile required</span>
+                        <span *ngIf=" regForm.get('mobile')?.hasError('min')">Mobile max 10ch</span>
+                    </div>
+                </div>
+                <div formArrayName="skills">
+                    <label class="form-label" for="skills">Skills : </label>
+                    <span *ngFor="let arr of skills.controls; let i = index">
+                        <input type="text" [formControlName]="i" class="Form-Control">
+                        <button class="btn btn-danger" (click)="removeSkill(i)">-</button>
+                    </span>
+                    <button class="btn btn-primary" (click)="addSkill()">+</button>
+                </div>
+                <div>
+                    <button class="btn btn-success" type="submit">Submit</button>
+                </div>
+            </form>
+            <p>{{title | capitalize}}</p>
+        </div>
+    </div>
+</div>
+
+{{ val1() }}

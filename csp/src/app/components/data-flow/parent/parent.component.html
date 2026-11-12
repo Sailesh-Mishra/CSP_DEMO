@@ -1,0 +1,7 @@
+<p>parent works!</p>
+
+<app-child [message]="parentMessage" (notify)="receive($event)"></app-child>
+
+
+<input type="text" (input)="type($any($event.target).value)" [value]="userName">
+<p>{{userName}}</p>

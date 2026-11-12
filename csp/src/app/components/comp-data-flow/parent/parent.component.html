@@ -1,0 +1,17 @@
+<h1>Parent Component</h1>
+<button (click)="callChildMethod()">Call Child Method</button>
+<app-child [message]="parentMessage" (sendData)="receiveMessage($event)"
+    (sendMethodData)="receiveMethodMessage($event)"></app-child>
+{{childMessage}}
+{{childMethodMessage}}
+
+@if (isBrowser) {
+  <app-second-child></app-second-child>
+}
+<br>
+<br>
+<br>
+
+<app-thirdd-child [title]="'Angular'" [description]="'JS Framework'" [buttonText]="'Learn'"></app-thirdd-child>
+<app-thirdd-child [title]="'Laravel'" [description]="'PHP Framework'" [buttonText]="'Learn'"></app-thirdd-child>
+<app-thirdd-child [title]="'Spring'" [description]="'JAVA Framework'" [buttonText]="'Learn'"></app-thirdd-child>

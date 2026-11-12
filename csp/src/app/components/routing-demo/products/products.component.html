@@ -1,0 +1,27 @@
+<p>products works!</p>
+<button><a routerLink="/products/productAdd">Add</a></button>
+<button><a routerLink="/products/productEdit">Edit</a></button>
+<router-outlet></router-outlet>
+<table class="table table-striped" *ngIf="productsList.length > 0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Rating</th>
+        </tr>
+        @for (p of productsList; track $index) {
+        <tr>
+            <td>{{p.id}}</td>
+            <td><a [routerLink]="['/products', p.id]">{{p.title}}</a></td>
+            <td><a [routerLink]="['/products', p.id]"
+                    [queryParams]="{category: p.category}">{{p.category}}</a></td>
+            <td>{{p.description}}</td>
+            <td>{{p.price}}</td>
+            <td>{{p.rating.rate}}</td>
+        </tr>
+        }
+    </thead>
+</table>

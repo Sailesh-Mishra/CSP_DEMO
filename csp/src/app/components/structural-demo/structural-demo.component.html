@@ -1,0 +1,53 @@
+<p>structural-demo works!</p>
+
+@if(age > 21){
+<h4>IF</h4>
+<ol>
+    <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti officia consequatur ratione temporibus
+        debitis! Magni consectetur mollitia nam praesentium sapiente, atque fugiat blanditiis laudantium ex cumque illo
+        iste ut ad.</li>
+    <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti officia consequatur ratione temporibus
+        debitis! Magni consectetur mollitia nam praesentium sapiente, atque fugiat blanditiis laudantium ex cumque illo
+        iste ut ad.</li>
+    <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti officia consequatur ratione temporibus
+        debitis! Magni consectetur mollitia nam praesentium sapiente, atque fugiat blanditiis laudantium ex cumque illo
+        iste ut ad.</li>
+    <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti officia consequatur ratione temporibus
+        debitis! Magni consectetur mollitia nam praesentium sapiente, atque fugiat blanditiis laudantium ex cumque illo
+        iste ut ad.</li>
+</ol>
+} @else {
+<p>End....</p>
+}
+
+<h4>For</h4>
+<ol>
+    @for(fruit of Fruits; track fruit){
+    <li [ngStyle]="{
+        'color':fruit === 'Apple' ? 'red' : 'green',
+        'font-size':'20px'
+    }" [ngClass]="{'highLight':fruit==='Banana', 'bold':fruit==='Orange'}">{{fruit}}</li>
+    }
+</ol>
+
+<h4>SWITCH</h4>
+@switch(day){
+@case ('Monday') {
+<p>Its Monday.....</p>
+}
+@case ('Tuesday') {
+<p>Its Tuesday.....</p>
+}
+@case ('Wednesday') {
+<p>Its Wednesday.....</p>
+}
+@case ('Thursday') {
+<p>Its Thursday.....</p>
+}
+@case ('Friday') {
+<p>Its Friday.....</p>
+}
+@default {
+<p>No day found.....</p>
+}
+}
