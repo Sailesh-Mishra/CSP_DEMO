@@ -32,7 +32,7 @@ export const routes: Routes = [
             return m.ProductEditComponent;
         })
     },
-    { path: 'products/:id', component: ProductsDetailsComponent, resolve: {user: userResolver} },
+    // { path: 'products/:id', component: ProductsDetailsComponent, resolve: {user: userResolver} },
     { path: 'form', component: FormDemoComponent },
     { path: '**', component: NotFoundComponent }
 ];
