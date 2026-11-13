@@ -1,5 +1,5 @@
 
-name: CSP_DEMO
+name: Angular CI Pipeline
 
 on:
   push:
@@ -20,7 +20,9 @@ jobs:
           node-version: '22'
 
       - name: Install Dependencies
+        working-directory: csp
         run: npm ci
 
       - name: Build Angular
+        working-directory: csp
         run: npm run build
