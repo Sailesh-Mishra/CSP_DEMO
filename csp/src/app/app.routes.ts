@@ -14,24 +14,24 @@ import { FormDemoComponent } from './components/form-demo/form-demo.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
-    {
-        path: 'products',
-        component: ProductsComponent,
-        canActivate: [authGuardGuard],
-        canActivateChild: [childGuardGuard],
-        canDeactivate: [exitGuardGuard],
-        canMatch: [matchGuardGuard],
-        children: [
-            { path: 'productAdd', component: ProductAddComponent }
-        ]
-    },
-    {
-        path: 'products/productEdit',
-        loadComponent: () => import('./components/routing-demo/products/product-edit/product-edit.component').then(m => {
-            console.log("Called....");
-            return m.ProductEditComponent;
-        })
-    },
+    // {
+    //     path: 'products',
+    //     component: ProductsComponent,
+    //     canActivate: [authGuardGuard],
+    //     canActivateChild: [childGuardGuard],
+    //     canDeactivate: [exitGuardGuard],
+    //     canMatch: [matchGuardGuard],
+    //     children: [
+    //         { path: 'productAdd', component: ProductAddComponent }
+    //     ]
+    // },
+    // {
+    //     path: 'products/productEdit',
+    //     loadComponent: () => import('./components/routing-demo/products/product-edit/product-edit.component').then(m => {
+    //         console.log("Called....");
+    //         return m.ProductEditComponent;
+    //     })
+    // },
     // { path: 'products/:id', component: ProductsDetailsComponent, resolve: {user: userResolver} },
     { path: 'form', component: FormDemoComponent },
     { path: '**', component: NotFoundComponent }
