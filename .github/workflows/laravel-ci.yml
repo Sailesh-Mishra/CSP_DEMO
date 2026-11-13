@@ -31,3 +31,4 @@ jobs:
           APP_ENV: testing
           APP_KEY: ${{ secrets.LARAVEL_APP_KEY }}
         run: php artisan test
+        
