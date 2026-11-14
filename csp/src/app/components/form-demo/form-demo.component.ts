@@ -5,6 +5,7 @@ import { strongPassword } from '../../validators/password.validator';
 import { CapitalizePipe } from '../../pipes/capitalize.pipe';
 import { Store } from '@ngrx/store';
 import { selectCartCount } from '../../cart/cart.selectors';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-form-demo',
@@ -16,7 +17,8 @@ export class FormDemoComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private store:Store
+    private store: Store,
+    private apiService: ApiService
   ) {
     effect(() => {
       console.log(this.val1());
@@ -30,6 +32,10 @@ export class FormDemoComponent implements OnInit {
   title: any = 'registration';
 
   val1: any = signal(0);
+
+  apiResponse: any = null;
+  apiError: string = '';
+  apiLoading: boolean = false;
 
   increament() {
     this.val1.set(20);
@@ -74,4 +80,24 @@ export class FormDemoComponent implements OnInit {
 
     }
   }
+
+
+  testLaravelApi() {
+    this.apiLoading = true;
+    this.apiResponse = null;
+    this.apiError = '';
+
+    this.apiService.testApi().subscribe({
+      next: (response) => {
+        this.apiResponse = response;
+        this.apiLoading = false;
+      },
+      error: (error) => {
+        console.error(error);
+        this.apiError = 'Laravel API connection failed!';
+        this.apiLoading = false;
+      }
+    });
+  }
+
 }

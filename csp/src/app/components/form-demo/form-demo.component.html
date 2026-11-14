@@ -1,3 +1,4 @@
+<h2>FORM DEMO COMPONENT IS LOADED</h2>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -52,3 +53,22 @@
 </div>
 
 {{ val1() }}
+
+<hr>
+
+<h3>Laravel API Connection Test</h3>
+
+<button type="button" class="btn btn-primary" (click)="testLaravelApi()" [disabled]="apiLoading">
+
+    {{ apiLoading ? 'Connecting...' : 'Test Laravel API' }}
+
+</button>
+
+<div *ngIf="apiResponse" class="alert alert-success mt-3">
+    <h5>API Response:</h5>
+    <pre>{{ apiResponse | json }}</pre>
+</div>
+
+<div *ngIf="apiError" class="alert alert-danger mt-3">
+    {{ apiError }}
+</div>
