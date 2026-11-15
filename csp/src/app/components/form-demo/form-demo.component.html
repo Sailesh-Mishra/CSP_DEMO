@@ -58,17 +58,36 @@
 
 <h3>Laravel API Connection Test</h3>
 
-<button type="button" class="btn btn-primary" (click)="testLaravelApi()" [disabled]="apiLoading">
+<div>
+    <button type="button" class="btn btn-primary" (click)="testLaravelApi()" [disabled]="apiLoading">
 
-    {{ apiLoading ? 'Connecting...' : 'Test Laravel API' }}
+        {{ apiLoading ? 'Connecting...' : 'Test Laravel API' }}
 
-</button>
+    </button>
 
-<div *ngIf="apiResponse" class="alert alert-success mt-3">
-    <h5>API Response:</h5>
-    <pre>{{ apiResponse | json }}</pre>
+    <div *ngIf="apiResponse" class="alert alert-success mt-3">
+        <h5>API Response:</h5>
+        <pre>{{ apiResponse | json }}</pre>
+    </div>
+
+    <div *ngIf="apiError" class="alert alert-danger mt-3">
+        {{ apiError }}
+    </div>
 </div>
 
-<div *ngIf="apiError" class="alert alert-danger mt-3">
-    {{ apiError }}
+<div>
+    <button type="button" class="btn btn-primary" (click)="testLaravelDeployApi()" [disabled]="deployApiLoading">
+
+        {{ deployApiLoading ? 'Connecting...' : 'Test Laravel Deploy API' }}
+
+    </button>
+
+    <div *ngIf="deployApiResponse" class="alert alert-success mt-3">
+        <h5>API Response:</h5>
+        <pre>{{ deployApiResponse | json }}</pre>
+    </div>
+
+    <div *ngIf="deployApiError" class="alert alert-danger mt-3">
+        {{ deployApiError }}
+    </div>
 </div>

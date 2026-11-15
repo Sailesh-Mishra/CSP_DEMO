@@ -37,6 +37,10 @@ export class FormDemoComponent implements OnInit {
   apiError: string = '';
   apiLoading: boolean = false;
 
+  deployApiResponse: any = null;
+  deployApiError: string = '';
+  deployApiLoading: boolean = false;
+
   increament() {
     this.val1.set(20);
   }
@@ -96,6 +100,24 @@ export class FormDemoComponent implements OnInit {
         console.error(error);
         this.apiError = 'Laravel API connection failed!';
         this.apiLoading = false;
+      }
+    });
+  }
+
+  testLaravelDeployApi() {
+    this.deployApiLoading = true;
+    this.deployApiResponse = null;
+    this.deployApiError = '';
+
+    this.apiService.deployApi().subscribe({
+      next: (response) => {
+        this.deployApiResponse = response;
+        this.deployApiLoading = false;
+      },
+      error: (error) => {
+        console.error(error);
+        this.deployApiError = 'Laravel Deploy API connection failed!';
+        this.deployApiLoading = false;
       }
     });
   }

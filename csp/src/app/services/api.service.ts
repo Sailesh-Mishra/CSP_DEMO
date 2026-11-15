@@ -13,4 +13,7 @@ export class ApiService {
   testApi(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/test`);
   }
+  deployApi(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/deployment-check`);
+  }
 }
